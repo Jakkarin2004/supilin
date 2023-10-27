@@ -1,3 +1,10 @@
+<?php
+include 'server.php';
+$id=$_GET['id'];
+$sql="SELECT * FROM member WHERE id='$id' ";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,6 +96,10 @@
         <div class="text-village">
           <div class="text_vill">
             <h1 class=" font-100 text-left mt-1 text_h1">หมู่บ้านหาดเบี้ย</h1>
+            <p><?=$row['id']?></p>
+            <p><?=$row['name']?></p>
+            <p><?=$row['surname']?></p>
+            <p><?=$row['telephone']?></p>
             <h1 class="text-left mt-3  text_h1">ประวัติศาสตร์บ้านหาดเบี้ย</h1>
             <p class="text_v">
               หาด หมายถึง ที่ที่เป็นดินราบ เป็นวงกว้างและยาวตามลำน้ำโขงเป็นที่ราบที่เกิดจากกระแสน้ำพัดมาทับทมกันนานๆ

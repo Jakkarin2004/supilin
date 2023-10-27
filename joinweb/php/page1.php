@@ -1,3 +1,7 @@
+<?php
+include 'server.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +82,12 @@
     <div class="slide-Lmain">
       <h1 class="text-left text-2xl p-2 text-slate-600 font-bold">หมู่บ้านในโครงการ</h1>
       <div class="slider_slide">
-        <div class="slide">
+<?php
+$sql = "SELECT * FROM member";
+$result=mysqli_query($conn,$sql);
+while($row=mysqli_fetch_array($result)){  
+?>
+   <div class="slide">
           <div class="image">
             <a href=""><img
                 src="https://images.unsplash.com/photo-1694618237208-728651429710?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60 "
@@ -86,73 +95,20 @@
           </div>
           <div class="text_slide">
             <h1>บ้านหาดเบี้ย</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium odit hic itaque consectetur libero vel porro maxime
-              consequatur provident minima ad iusto, culpa odio et quae nesciunt
-              quasi nisi rem.
-            </p>
-            <a href="/joinweb/php/page2.php" type="button" class="bg-white text-white font-bold py-2 px-4 rounded">
+            <p>รหัส : <?=$row["id"]?></p>
+            <p>ชื่อ : <?=$row["name"]?></p>
+            <p>นามสกุล : <?=$row["surname"]?></p>
+            <p>เบอร์โทร : <?=$row["telephone"]?></p>
+            <a href="/joinweb/php/page2.php?id=<?=$row["id"]?>" type="button" class="bg-white text-white font-bold py-2 px-4 rounded">
               ข้อมูลเพิ่มเติม
             </a>
           </div>
-        </div>
-        <div class="slide">
-          <div class="image">
-            <a href=""><img
-                src="https://images.unsplash.com/photo-1682685797277-f2bf89b24017?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-                alt="Image 2" /></a>
-          </div>
-          <div class="text_slide">
-            <h1>Village</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium odit hic itaque consectetur libero vel porro maxime
-              consequatur provident minima ad iusto, culpa odio et quae nesciunt
-              quasi nisi rem.
-            </p>
-            <a href="/joinweb/php/page2.php" type="button"
-              class="bg-white text-white font-bold py-2 px-4 rounded">ข้อมูลเพิ่มเติม</a>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="image">
-            <a href=""><img
-                src="https://images.unsplash.com/photo-1695151841530-fb673ab67a92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-                alt="Image 2" /></a>
-          </div>
-          <div class="text_slide">
-            <h1>Village</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium odit hic itaque consectetur libero vel porro maxime
-              consequatur provident minima ad iusto, culpa odio et quae nesciunt
-              quasi nisi rem.
-            </p>
-            <a href="http://localhost/joinweb/php/page2.php" type="button"
-              class="bg-white text-white font-bold py-2 px-4 rounded">ข้อมูลเพิ่มเติม</a>
-          </div>
-        </div>
-        <div class="slide">
-          <div class="image">
-            <a href=""><img
-                src="https://images.unsplash.com/photo-1682687220211-c471118c9e92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
-                alt="Image 2" /></a>
-          </div>
-          <div class="text_slide">
-            <h1>Village</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium odit hic itaque consectetur libero vel porro maxime
-              consequatur provident minima ad iusto, culpa odio et quae nesciunt
-              quasi nisi rem.
-            </p>
-            <a href="http://localhost/joinweb/php/page2.php" type="button"
-              class="bg-white text-white font-bold py-2 px-4 rounded">ข้อมูลเพิ่มเติม</a>
-          </div>
-        </div>
-        <!-- เพิ่มภาพอื่นๆ ตามต้องการ -->
-      </div>
+        </div>     
+<?php
+}
+mysqli_close($conn); //ปิดการเชื่อมต่อฐานข้อมูล
+?>
+     </div>
       <div class="btn">
         <div class="btn-space1">
           <button id="prev" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">

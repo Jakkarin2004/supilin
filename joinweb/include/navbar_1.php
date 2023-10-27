@@ -17,7 +17,7 @@
         <a href="../php/page1.php">หน้าหลัก</a>
         </li>
         <li>
-          <a href="#about">สำรับอาหาร</a>
+          <a href="#food-table">สำรับอาหาร</a>
         </li>
         <li>
           <a href="#contact">ติดต่อ</a>
